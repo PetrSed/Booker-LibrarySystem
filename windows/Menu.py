@@ -1,11 +1,23 @@
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QLineEdit, QComboBox, QAction, QMainWindow, \
+    QCompleter, QTableWidget, QTableWidgetItem, QTableWidgetSelectionRange
+from PyQt5 import QtWidgets
+from PyQt5.QtGui import QIcon
+import sqlite3
+import datetime
+from windows import *
+
+
 class Main(QMainWindow):
-    def __init__(self):
+    def __init__(self, settings):
         super().__init__()
+        self.settings = settings
+        self.lan
         self.init_ui()
 
     def init_ui(self):
         self.setGeometry(300, 300, 300, 155)
-        self.setWindowTitle(program_name)
+        self.setWindowTitle("Booker")
         self.setWindowIcon(QIcon('pics/icon.png'))
         main_menu = self.menuBar()
         add_to_base_btn = main_menu.addMenu('Добавить в базу')
@@ -27,7 +39,7 @@ class Main(QMainWindow):
         add_to_base_btn.addAction(add_book_type_to_base_btn)
 
         greeting = QLabel(self)
-        greeting.setText(program_name)
+        greeting.setText("Booker")
         greeting.move(109, 20)
 
         give_book_btn = QPushButton('Выдать книгу', self)
